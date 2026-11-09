@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rabin Studio — Professional Photography</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- NAV -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <div class="brand">
+                <div class="logo">RS</div> Rabin Studio
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#contact" class="btn primary">Book a Shoot</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="container hero">
+        <div>
+            <h1 class="headline">Crafting timeless stories through light, color and composition.</h1>
+            <p class="sub">I’m Rabin — a Kathmandu-based professional photographer specializing in portraits, weddings,
+                and commercial campaigns. Available worldwide.</p>
+            <div class="hero-cta">
+                <a href="#portfolio" class="btn">View Portfolio</a>
+                <a href="#contact" class="btn primary">Get a Quote</a>
+            </div>
+            <div class="stats">
+                <div class="stat">500+ shoots</div>
+                <div class="stat">7 yrs experience</div>
+                <div class="stat">Brands & weddings</div>
+            </div>
+        </div>
+        <div class="hero-img">
+            <img src="https://images.unsplash.com/photo-1526178612779-1a4b8b9f1f16?q=80&w=1600&auto=format&fit=crop"
+                alt="Hero sample" loading="lazy" />
+            <div class="badge">Sony A7IV • 50mm • f/1.8 • 1/200s • ISO 100</div>
+        </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="container">
+        <div class="section-head">
+            <h2>About</h2>
+            <p class="muted">Awards, approach & tools</p>
+        </div>
+        <div class="about">
+            <div class="card">
+                <h3>My Approach</h3>
+                <p>I blend candid moments with guided posing to keep you relaxed and natural. I’m obsessed with clean
+                    framing, flattering light and consistent color grading so your photos feel cinematic yet timeless.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Gear & Workflow</h3>
+                <p>Dual-slot mirrorless bodies, a trio of fast primes (35/50/85), off-camera flash for control, and a
+                    color-managed Lightroom + Photoshop pipeline with calibrated monitors.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="container">
+        <div class="section-head">
+            <h2>Services</h2>
+            <p class="muted">Straightforward packages you can customize</p>
+        </div>
+        <div class="services">
+            <div class="card service">
+                <h3>Portraits</h3>
+                <p>Studio or outdoor. Includes retouching and web-ready gallery.</p>
+                <div class="price">NPR 8,500+</div>
+            </div>
+            <div class="card service">
+                <h3>Weddings</h3>
+                <p>Half-day to multi-day coverage, albums and films available.</p>
+                <div class="price">NPR 65,000+</div>
+            </div>
+            <div class="card service">
+                <h3>Commercial</h3>
+                <p>Brand, product and campaign photography with licensing.</p>
+                <div class="price">Custom Quote</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="container">
+        <div class="section-head">
+            <h2>Portfolio</h2>
+            <p class="muted">Filtered gallery with lightbox</p>
+        </div>
+
+        <div class="filters">
+            <button class="active" data-filter="all">All</button>
+            <button data-filter="portraits">Portraits</button>
+            <button data-filter="weddings">Weddings</button>
+            <button data-filter="commercial">Commercial</button>
+        </div>
+
+        <div class="grid" id="grid">
+            <!-- Portraits -->
+            <figure class="grid-item" data-cat="portraits"><span class="pill">Portraits</span>
+                <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?q=80&w=1200&auto=format&fit=crop"
+                    alt="Portrait" loading="lazy">
+            </figure>
+            <figure class="grid-item" data-cat="portraits"><span class="pill">Portraits</span>
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop"
+                    alt="Portrait" loading="lazy">
+            </figure>
+            <!-- Weddings -->
+            <figure class="grid-item" data-cat="weddings"><span class="pill">Weddings</span>
+                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop"
+                    alt="Wedding" loading="lazy">
+            </figure>
+            <figure class="grid-item" data-cat="weddings"><span class="pill">Weddings</span>
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop"
+                    alt="Wedding" loading="lazy">
+            </figure>
+            <!-- Commercial -->
+            <figure class="grid-item" data-cat="commercial"><span class="pill">Commercial</span>
+                <img src="https://images.unsplash.com/photo-1520975922131-c0fef2e900de?q=80&w=1200&auto=format&fit=crop"
+                    alt="Commercial" loading="lazy">
+            </figure>
+            <figure class="grid-item" data-cat="commercial"><span class="pill">Commercial</span>
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop"
+                    alt="Commercial" loading="lazy">
+            </figure>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog">
+        <button class="close" aria-label="Close" id="closeLightbox">✕</button>
+        <img id="lightboxImg" alt="Preview" />
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="container">
+        <div class="section-head">
+            <h2>Client Reviews</h2>
+            <p class="muted">What people say</p>
+        </div>
+        <div class="testimonials">
+            <div class="card"><strong>Asmita</strong>
+                <p class="quote">“Rabin captured our wedding beautifully. Every moment feels alive.”</p>
+            </div>
+            <div class="card"><strong>Sachin</strong>
+                <p class="quote">“Professional, punctual and friendly. Portraits came out stunning.”</p>
+            </div>
+            <div class="card"><strong>Bright Brands</strong>
+                <p class="quote">“Clean commercial images that matched our campaign mood board.”</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="container">
+        <div class="section-head">
+            <h2>Book a Shoot</h2>
+            <p class="muted">Tell me about your project</p>
+        </div>
+        <div class="card">
+            <form id="contactForm">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                    <input required name="name" placeholder="Your Name" />
+                    <input required type="email" name="email" placeholder="Email" />
+                </div>
+                <select name="service" required>
+                    <option value="">Select Service</option>
+                    <option>Portraits</option>
+                    <option>Weddings</option>
+                    <option>Commercial</option>
+                </select>
+                <textarea name="message" placeholder="Tell me what you need…"></textarea>
+                <button class="btn primary" type="submit">Send Inquiry</button>
+                <small class="muted">This demo form uses JavaScript only. Wire it to Formspree, EmailJS or your backend
+                    to receive messages.</small>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+            <div>© <span id="year"></span> Rabin Studio. All rights reserved.</div>
+            <div class="muted">Kathmandu • Available worldwide</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

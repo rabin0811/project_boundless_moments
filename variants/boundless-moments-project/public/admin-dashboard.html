@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Boundless Moments</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Admin Dashboard</h1>
+            <a href="#manage-portfolio">Manage Portfolio</a>
+            <a href="#view-messages">View Messages</a>
+            <a href="#" id="logout-button">Log Out</a> 
+        </nav>
+    </header>
+
+    <main class="admin-dashboard-page">
+        <h2>Content Management System</h2>
+
+        <section id="manage-portfolio" class="admin-section">
+            <h3>Manage Portfolio Items (CRUD)</h3>
+            
+            <form id="addPortfolioForm">
+                <h4>1. Add New Project (CREATE)</h4>
+                <label for="p-title">Title:</label><input type="text" id="p-title" name="title" required>
+                <label for="p-url">Image URL:</label><input type="url" id="p-url" name="image_url" placeholder="https://example.com/photo.jpg" required>
+                <label for="p-desc">Description:</label><textarea id="p-desc" name="description" rows="3"></textarea>
+                <label for="p-cat">Category:</label>
+                <select id="p-cat" name="category">
+                    <option value="wedding">Wedding</option>
+                    <option value="portrait">Portrait</option>
+                    <option value="event">Event</option>
+                    <option value="general">General</option>
+                </select>
+                <button type="submit">Add Portfolio Item</button>
+                <p id="portfolioMessage" class="form-message"></p>
+            </form>
+
+            <hr style="margin: 30px 0;">
+            <h4>2. Existing Projects (READ, DELETE, Prepare UPDATE)</h4>
+            <div id="existingProjectsList">
+                <p>Loading portfolio items...</p>
+            </div>
+            
+            <form id="updatePortfolioForm" style="display:none; margin-top: 20px; border-top: 1px dashed #ccc; padding-top: 15px;">
+                <h4>3. Edit Project <span id="update-project-id"></span> (UPDATE)</h4>
+                <input type="hidden" id="u-id" name="id">
+                <label for="u-title">Title:</label><input type="text" id="u-title" name="title" required>
+                <label for="u-url">Image URL:</label><input type="url" id="u-url" name="image_url" required>
+                <label for="u-desc">Description:</label><textarea id="u-desc" name="description" rows="3"></textarea>
+                <label for="u-cat">Category:</label>
+                <select id="u-cat" name="category">
+                    <option value="wedding">Wedding</option>
+                    <option value="portrait">Portrait</option>
+                    <option value="event">Event</option>
+                    <option value="general">General</option>
+                </select>
+                <button type="submit">Save Changes</button>
+                <p id="updateMessage" class="form-message"></p>
+            </form>
+        </section>
+
+        <section id="view-messages" class="admin-section">
+            <h3>Client Messages</h3>
+            <div id="messagesList">
+                <p>Loading client messages...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Boundless Moments Admin Panel</p>
+    </footer>
+    <script src="js/admin-dashboard.js"></script> 
+</body>
+</html>

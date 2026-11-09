@@ -1,0 +1,41 @@
+<!-- public/admin-login.html - Login Page for Admin Access (M5) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1><a href="index.html">Boundless Moments Photography</a></h1>
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main class="login-page">
+        <h2>Administrator Access</h2>
+        <p style="text-align: center;">Log in to manage portfolio items and view client messages.</p>
+        
+        <form id="adminLoginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required value="admin">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required value="password123">
+            
+            <button type="submit">Log In</button>
+            <p id="loginMessage" class="form-message" style="margin-top: 15px; text-align: center;"></p>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Boundless Moments Photography</p>
+    </footer>
+    <script src="js/admin-auth.js"></script> 
+</body>
+</html>

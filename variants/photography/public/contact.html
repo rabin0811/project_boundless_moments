@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Contact - Timeless Memories</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="brand">Timeless Memories</div>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/portfolio.html">Portfolio</a>
+      <a href="/gallery.html">Gallery</a>
+      <a href="/experience.html">Experience</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>Contact Us</h2>
+    <div class="card form">
+      <form id="contactForm">
+        <input id="name" class="input" type="text" placeholder="Your name" required>
+        <input id="email" class="input" type="email" placeholder="Your email" required>
+        <textarea id="message" class="input" rows="6" placeholder="Your message" required></textarea>
+        <button class="btn" type="submit">Send Message</button>
+      </form>
+      <p id="responseMsg" style="margin-top:10px;color:var(--muted)"></p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    © 2025 Timeless Memories Photography
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Boundless Moments — Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <nav class="container navbar">
+    <div class="brand">
+      <div class="logo">BM</div> Boundless Moments
+    </div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="/admin/admin-login.html">Admin</a>
+      <a href="contact.html" class="btn">Contact</a>
+    </div>
+  </nav>
+
+  <header class="container header-hero">
+    <div>
+      <h1 class="headline">Boundless Moments — Stories Told Through Light</h1>
+      <p class="sub">We are a team of professional photographers crafting cinematic visuals — weddings, portraits, and
+        commercial campaigns. Based in Kathmandu, available worldwide.</p>
+      <div style="display:flex;gap:12px">
+        <a class="btn" href="portfolio.html">See Portfolio</a>
+        <a class="btn" href="contact.html">Book a Shoot</a>
+      </div>
+    </div>
+    <div class="card" style="width:420px">
+      <img src="/uploads/sample-hero.jpg" alt="" style="width:100%;height:260px;object-fit:cover;border-radius:10px">
+      <div style="margin-top:12px">
+        <strong>Quick Info</strong>
+        <p class="muted">500+ shoots • 7 years experience • Weddings & Brands</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about" class="section">
+      <div class="section-head">
+        <h2>About</h2>
+        <p class="muted">Our approach & philosophy</p>
+      </div>
+      <div class="card">
+        <p>Boundless Moments blends candid storytelling with technical mastery. We prioritize lighting, composition, and
+          authentic emotion to create images that last a lifetime.</p>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="section-head">
+        <h2>Experience & Skills</h2>
+        <p class="muted">Awards, tools & strengths</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="card">
+          <h3>Experience</h3>
+          <ul>
+            <li>7+ years professional photography</li>
+            <li>Weddings, portraits, product & campaign shoots</li>
+            <li>Worked with local & international brands</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Skills & Tools</h3>
+          <ul>
+            <li>Studio & natural light mastery</li>
+            <li>Retouching (Lightroom & Photoshop)</li>
+            <li>Color grading & cinematic editing</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-short" class="section">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p class="muted">Let's collaborate</p>
+      </div>
+      <div class="card">
+        <p>Prefer direct messages? Email us at <strong>hello@boundlessmoments.com</strong> or <a href="contact.html">use
+            our booking form</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Boundless Moments — Web by Web Technology Services Pvt. Ltd.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rabin Studio — Professional Photography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1115; --card:#151823; --muted:#9aa3b2; --text:#e8ebf1; --accent:#78e3ff; --accent2:#ffd479;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,#0c0f14 0%,#0f1115 60%,#0f1115 100%);color:var(--text);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    /* Layout */
+    .container{width:min(1200px,92%);margin:0 auto}
+    /* Nav */
+    .navbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(160%) blur(8px);background:rgba(15,17,21,.65);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.4px}
+    .brand .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#0b0e12;font-weight:800}
+    .nav-links{display:flex;gap:22px}
+    .nav-links a{opacity:.85}
+    .nav-links a:hover{opacity:1}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04)}
+    .btn:hover{transform:translateY(-1px);transition:.2s ease;}
+    .btn.primary{background:linear-gradient(135deg,rgba(120,227,255,.18),rgba(255,212,121,.18));border-color:rgba(255,255,255,.18)}
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;padding:72px 0}
+    @media(max-width:900px){.hero{grid-template-columns:1fr;}}
+    .headline{font-family:"Playfair Display",serif;font-size:clamp(32px,4.2vw,56px);line-height:1.08;margin:0 0 14px}
+    .sub{color:var(--muted);font-size:clamp(14px,1.6vw,16px);margin-bottom:26px}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+    .stats{display:flex;gap:18px;margin-top:26px;color:var(--muted)}
+    .stat{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:12px 16px;border-radius:14px}
+    .hero-img{position:relative;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.06);box-shadow:0 30px 60px rgba(0,0,0,.35)}
+    .hero-img img{aspect-ratio:4/3;object-fit:cover;filter:saturate(110%) contrast(105%)}
+    .badge{position:absolute;bottom:14px;left:14px;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);padding:8px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);font-size:12px}
+    /* Sections */
+    section{padding:64px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:20px}
+    .section-head h2{font-size:28px;margin:0;font-weight:700}
+    .muted{color:var(--muted)}
+    /* About */
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    @media(max-width:900px){.about{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:22px;padding:22px}
+    /* Services */
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media(max-width:900px){.services{grid-template-columns:1fr}}
+    .service .price{font-weight:700;font-size:22px;margin-top:8px}
+    /* Gallery */
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 22px}
+    .filters button{padding:8px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:var(--text);cursor:pointer}
+    .filters button.active{background:linear-gradient(135deg,rgba(120,227,255,.18),rgba(255,212,121,.18));}
+    .grid{columns:4 280px;column-gap:14px}
+    .grid-item{break-inside:avoid;margin-bottom:14px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.06);cursor:pointer;position:relative}
+    .grid-item img{width:100%;height:auto;display:block;transition:transform .3s ease}
+    .grid-item:hover img{transform:scale(1.03)}
+    .pill{position:absolute;left:10px;top:10px;background:rgba(0,0,0,.45);padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);font-size:12px}
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:24px}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:92vw;max-height:86vh;border-radius:14px;border:1px solid rgba(255,255,255,.15)}
+    .lightbox .close{position:absolute;top:24px;right:24px;font-size:28px;cursor:pointer;background:rgba(255,255,255,.1);border-radius:12px;line-height:0;padding:10px 14px}
+    /* Testimonials */
+    .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media(max-width:900px){.testimonials{grid-template-columns:1fr}}
+    .quote{font-style:italic;color:var(--muted)}
+    /* Contact */
+    form{display:grid;gap:12px}
+    input,textarea,select{background:#0f131b;border:1px solid rgba(255,255,255,.1);padding:12px 14px;border-radius:12px;color:var(--text)}
+    textarea{min-height:120px;resize:vertical}
+    .footer{padding:26px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,.06);margin-top:40px}
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <div class="brand"><div class="logo">RS</div> Rabin Studio</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact" class="btn primary">Book a Shoot</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="container hero">
+    <div>
+      <h1 class="headline">Crafting timeless stories through light, color and composition.</h1>
+      <p class="sub">I’m Rabin — a Kathmandu‑based professional photographer specializing in portraits, weddings, and commercial campaigns. Available worldwide.</p>
+      <div class="hero-cta">
+        <a href="#portfolio" class="btn">View Portfolio</a>
+        <a href="#contact" class="btn primary">Get a Quote</a>
+      </div>
+      <div class="stats">
+        <div class="stat">500+ shoots</div>
+        <div class="stat">7 yrs experience</div>
+        <div class="stat">Brands & weddings</div>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1526178612779-1a4b8b9f1f16?q=80&w=1600&auto=format&fit=crop" alt="Hero sample" loading="lazy"/>
+      <div class="badge">Sony A7IV • 50mm • f/1.8 • 1/200s • ISO 100</div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="container">
+    <div class="section-head">
+      <h2>About</h2>
+      <p class="muted">Awards, approach & tools</p>
+    </div>
+    <div class="about">
+      <div class="card">
+        <h3>My Approach</h3>
+        <p>I blend candid moments with guided posing to keep you relaxed and natural. I’m obsessed with clean framing, flattering light and consistent color grading so your photos feel cinematic yet timeless.</p>
+      </div>
+      <div class="card">
+        <h3>Gear & Workflow</h3>
+        <p>Dual‑slot mirrorless bodies, a trio of fast primes (35/50/85), off‑camera flash for control, and a color‑managed Lightroom + Photoshop pipeline with calibrated monitors.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="container">
+    <div class="section-head">
+      <h2>Services</h2>
+      <p class="muted">Straightforward packages you can customize</p>
+    </div>
+    <div class="services">
+      <div class="card service">
+        <h3>Portraits</h3>
+        <p>Studio or outdoor. Includes retouching and web‑ready gallery.</p>
+        <div class="price">NPR 8,500+</div>
+      </div>
+      <div class="card service">
+        <h3>Weddings</h3>
+        <p>Half‑day to multi‑day coverage, albums and films available.</p>
+        <div class="price">NPR 65,000+</div>
+      </div>
+      <div class="card service">
+        <h3>Commercial</h3>
+        <p>Brand, product and campaign photography with licensing.</p>
+        <div class="price">Custom Quote</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="container">
+    <div class="section-head">
+      <h2>Portfolio</h2>
+      <p class="muted">Filtered gallery with lightbox</p>
+    </div>
+
+    <div class="filters">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="portraits">Portraits</button>
+      <button data-filter="weddings">Weddings</button>
+      <button data-filter="commercial">Commercial</button>
+    </div>
+
+    <div class="grid" id="grid">
+      <!-- Portraits -->
+      <figure class="grid-item" data-cat="portraits"><span class="pill">Portraits</span>
+        <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?q=80&w=1200&auto=format&fit=crop" alt="Portrait" loading="lazy"></figure>
+      <figure class="grid-item" data-cat="portraits"><span class="pill">Portraits</span>
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop" alt="Portrait" loading="lazy"></figure>
+      <!-- Weddings -->
+      <figure class="grid-item" data-cat="weddings"><span class="pill">Weddings</span>
+        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop" alt="Wedding" loading="lazy"></figure>
+      <figure class="grid-item" data-cat="weddings"><span class="pill">Weddings</span>
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" alt="Wedding" loading="lazy"></figure>
+      <!-- Commercial -->
+      <figure class="grid-item" data-cat="commercial"><span class="pill">Commercial</span>
+        <img src="https://images.unsplash.com/photo-1520975922131-c0fef2e900de?q=80&w=1200&auto=format&fit=crop" alt="Commercial" loading="lazy"></figure>
+      <figure class="grid-item" data-cat="commercial"><span class="pill">Commercial</span>
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop" alt="Commercial" loading="lazy"></figure>
+      <!-- Add more as needed -->
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog">
+    <button class="close" aria-label="Close" id="closeLightbox">✕</button>
+    <img id="lightboxImg" alt="Preview" />
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="container">
+    <div class="section-head">
+      <h2>Client Reviews</h2>
+      <p class="muted">What people say</p>
+    </div>
+    <div class="testimonials">
+      <div class="card"><strong>Asmita</strong><p class="quote">“Rabin captured our wedding beautifully. Every moment feels alive.”</p></div>
+      <div class="card"><strong>Sachin</strong><p class="quote">“Professional, punctual and friendly. Portraits came out stunning.”</p></div>
+      <div class="card"><strong>Bright Brands</strong><p class="quote">“Clean commercial images that matched our campaign mood board.”</p></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="container">
+    <div class="section-head">
+      <h2>Book a Shoot</h2>
+      <p class="muted">Tell me about your project</p>
+    </div>
+    <div class="card">
+      <form id="contactForm">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <input required name="name" placeholder="Your Name"/>
+          <input required type="email" name="email" placeholder="Email"/>
+        </div>
+        <select name="service" required>
+          <option value="">Select Service</option>
+          <option>Portraits</option>
+          <option>Weddings</option>
+          <option>Commercial</option>
+        </select>
+        <textarea name="message" placeholder="Tell me what you need…"></textarea>
+        <button class="btn primary" type="submit">Send Inquiry</button>
+        <small class="muted">This demo form uses JavaScript only. Wire it to Formspree, EmailJS or your backend to receive messages.</small>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+      <div>© <span id="year"></span> Rabin Studio. All rights reserved.</div>
+      <div class="muted">Kathmandu • Available worldwide</div>
+    </div>
+  </footer>
+
+  <script>
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Gallery filters
+    const filterButtons = document.querySelectorAll('.filters button');
+    const items = document.querySelectorAll('.grid-item');
+    filterButtons.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        filterButtons.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        items.forEach(it=>{
+          const show = f==='all' || it.dataset.cat===f;
+          it.style.display = show? 'block':'none';
+        })
+      })
+    })
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('closeLightbox');
+    document.getElementById('grid').addEventListener('click',e=>{
+      const target = e.target.closest('.grid-item');
+      if(!target) return;
+      lbImg.src = target.querySelector('img').src;
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+    });
+    const closeLightbox=()=>{lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.body.style.overflow='auto'}
+    closeBtn.addEventListener('click',closeLightbox);
+    lb.addEventListener('click',e=>{ if(e.target===lb) closeLightbox(); });
+
+    // Contact form (demo)
+    document.getElementById('contactForm').addEventListener('submit',function(e){
+      e.preventDefault();
+      alert('Thanks! Your inquiry has been recorded (demo). Connect this form to a real endpoint to receive emails.');
+      this.reset();
+    })
+  </script>
+</body>
+</html>

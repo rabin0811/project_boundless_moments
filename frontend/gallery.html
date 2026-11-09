@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Gallery — Boundless Moments</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <nav class="container navbar">
+    <div class="brand">
+      <div class="logo">BM</div> Boundless Moments
+    </div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html" class="btn">Contact</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="section">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <div>
+          <h2>Gallery</h2>
+          <p class="muted">High-resolution images, filter and sort</p>
+        </div>
+        <div>
+          <select id="sortSelect" class="btn">
+            <option value="new">Newest</option>
+            <option value="old">Oldest</option>
+            <option value="title">Title</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="filters">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="Portraits">Portraits</button>
+        <button data-filter="Weddings">Weddings</button>
+        <button data-filter="Commercial">Commercial</button>
+      </div>
+
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+
+  <footer class="container">© <span id="year"></span> Boundless Moments</footer>
+
+  <script src="site.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    let portfolioCache = [];
+
+    async function loadGallery(sort = 'new') {
+      const res = await fetch('/api/portfolio');
+      const data = await res.json();
+      if (!data.success) return;
+      portfolioCache = data.items;
+      sortAndRender(sort);
+    }
+
+    function sortAndRender(sort) {
+      let items = [...portfolioCache];
+      if (sort === 'old') items.sort((a, b) => new Date(a.CreatedAt) - new Date(b.CreatedAt));
+      else if (sort === 'title') items.sort((a, b) => (a.Title || '').localeCompare(b.Title || ''));
+      else items.sort((a, b) => new Date(b.CreatedAt) - new Date(a.CreatedAt));
+
+      const grid = document.getElementById('grid');
+      grid.innerHTML = '';
+      items.forEach(item => {
+        const div = document.createElement('figure');
+        div.className = 'grid-item';
+        div.dataset.cat = item.Category || 'Uncategorized';
+        div.innerHTML = `<span class="pill">${item.Category || 'Uncategorized'}</span>
+          <img src="${item.ImageUrl}" alt="${item.Title || ''}">
+          <figcaption style="padding:12px"><strong>${item.Title || ''}</strong></figcaption>`;
+        grid.appendChild(div);
+      });
+      if (typeof setupFilters === 'function') setupFilters();
+    }
+
+    document.getElementById('sortSelect').addEventListener('change', (e) => sortAndRender(e.target.value));
+    loadGallery();
+  </script>
+</body>
+
+</html>

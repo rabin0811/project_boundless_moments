@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | Timeless Memories</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Admin Login</h1>
+  </header>
+
+  <section class="admin">
+    <div id="loginBox">
+      <input type="text" id="adminUser" placeholder="Username" required>
+      <input type="password" id="adminPass" placeholder="Password" required>
+      <button id="loginBtn">Login</button>
+      <p id="loginStatus"></p>
+    </div>
+
+    <div id="dashboard" class="hidden">
+      <h2>Welcome Admin</h2>
+      <h3>Inquiries</h3>
+      <ul id="inquiryList"></ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Timeless Memories Photography</p>
+  </footer>
+</body>
+</html>

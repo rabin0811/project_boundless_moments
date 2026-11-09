@@ -1,0 +1,97 @@
+IF DB_ID('BoundlessMoments') IS NULL
+  CREATE DATABASE BoundlessMoments;
+GO
+USE BoundlessMoments;
+GO
+
+IF OBJECT_ID('dbo.Admins', 'U') IS NULL
+CREATE TABLE Admins (
+  Id INT IDENTITY(1,1) PRIMARY KEY,
+  Username NVARCHAR(100) NOT NULL UNIQUE,
+  Password NVARCHAR(256) NOT NULL,
+  DisplayName NVARCHAR(200),
+  CreatedAt DATETIME2 DEFAULT SYSUTCDATETIME()
+);
+GO
+
+IF OBJECT_ID('dbo.Users', 'U') IS NULL
+CREATE TABLE Users (
+  Id INT IDENTITY(1,1) PRIMARY KEY,
+  Email NVARCHAR(200) NOT NULL UNIQUE,
+  Password NVARCHAR(256) NOT NULL
+);
+GO
+
+IF OBJECT_ID('dbo.Portfolio', 'U') IS NULL
+CREATE TABLE Portfolio (
+  Id INT IDENTITY(1,1) PRIMARY KEY,
+  Title NVARCHAR(200),
+  Category NVARCHAR(100),
+  ImageUrl NVARCHAR(1000),
+  Caption NVARCHAR(1000),
+  Featured BIT NOT NULL DEFAULT 0,
+  CreatedAt DATETIME2 DEFAULT SYSUTCDATETIME()
+);
+GO
+
+IF OBJECT_ID('dbo.Gallery', 'U') IS NULL
+CREATE TABLE Gallery (
+  Id INT IDENTITY(1,1) PRIMARY KEY,
+  Title NVARCHAR(200),
+  Section NVARCHAR(100),
+  ImageUrl NVARCHAR(1000),
+  CreatedAt DATETIME2 DEFAULT SYSUTCDATETIME()
+);
+GO
+
+IF COL_LENGTH('dbo.Gallery', 'Section') IS NULL
+  ALTER TABLE Gallery ADD Section NVARCHAR(100);
+GO
+
+IF COL_LENGTH('dbo.Portfolio', 'ImageUrl') IS NULL
+  ALTER TABLE Portfolio ADD ImageUrl NVARCHAR(1000);
+GO
+
+IF COL_LENGTH('dbo.Portfolio', 'Featured') IS NULL
+  ALTER TABLE Portfolio ADD Featured BIT NOT NULL CONSTRAINT DF_Portfolio_Featured DEFAULT 0;
+GO
+
+IF OBJECT_ID('dbo.Categories', 'U') IS NULL
+CREATE TABLE Categories (
+  Id INT IDENTITY(1,1) PRIMARY KEY,
+  Name NVARCHAR(100) NOT NULL UNIQUE
+);
+GO
+
+IF OBJECT_ID('dbo.Messages', 'U') IS NULL
+CREATE TABLE Messages (
+  Id INT IDENTITY(1,1) PRIMARY KEY,
+  Name NVARCHAR(200) NOT NULL,
+  Email NVARCHAR(200) NOT NULL,
+  Service NVARCHAR(100),
+  Message NVARCHAR(MAX),
+  CreatedAt DATETIME2 DEFAULT SYSUTCDATETIME()
+);
+GO
+
+IF OBJECT_ID('dbo.Inquiries', 'U') IS NULL
+CREATE TABLE Inquiries (
+  Id INT IDENTITY(1,1) PRIMARY KEY,
+  Name NVARCHAR(200) NOT NULL,
+  Email NVARCHAR(200) NOT NULL,
+  Service NVARCHAR(100),
+  Message NVARCHAR(MAX),
+  CreatedAt DATETIME2 DEFAULT SYSUTCDATETIME()
+);
+GO
+
+IF NOT EXISTS (SELECT 1 FROM Categories)
+BEGIN
+  INSERT INTO Categories (Name) VALUES
+    (N'Wedding'),
+    (N'Portrait'),
+    (N'Landscape'),
+    (N'Event'),
+    (N'Commercial');
+END
+GO

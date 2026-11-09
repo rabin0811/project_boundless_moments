@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Boundless Moments</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1><a href="index.html">Boundless Moments Photography</a></h1>
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="experience.html">Experience & Skills</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main class="contact-page">
+        <h2>Get in Touch with Boundless Moments</h2>
+        <p style="text-align: center; max-width: 600px; margin: 0 auto 30px;">
+            Ready to book your session or just have a question? Fill out the form below and we'll get back to you as soon as possible.
+        </p>
+        
+        <form id="contactForm">
+            <label for="sender_name">Your Name:</label>
+            <input type="text" id="sender_name" name="sender_name" required>
+
+            <label for="sender_email">Your Email:</label>
+            <input type="email" id="sender_email" name="sender_email" required>
+            
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+
+            <button type="submit">Send Message</button>
+            <p id="contactMessage" class="form-message" style="margin-top: 15px; text-align: center;"></p>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Boundless Moments Photography</p>
+    </footer>
+    <script src="js/contact.js"></script> 
+</body>
+</html>
